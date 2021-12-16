@@ -304,7 +304,7 @@ func (e *Event) Hex(key string, val []byte) *Event {
 // No sanity check is performed on b; it must not contain carriage returns and
 // be valid JSON.
 func (e *Event) RawJSON(key string, b []byte) *Event {
-	if e == nil {
+	if e == nil || b == nil {
 		return e
 	}
 	e.buf = appendJSON(enc.AppendKey(e.buf, key), b)
